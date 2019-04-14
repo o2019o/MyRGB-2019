@@ -14,12 +14,21 @@ public class PlayerStatus : MonoBehaviour {
     public int def = 20;
     public int addDef = 0;
     public int speed = 20;
-    public int addSpeed = 20;
+    public int addSpeed = 0;
     public int point_remain = 0;
 
     public void GetCoins(int count)
     {
         coin += count;
+    }
+    public bool GetPoints(int point=1)
+    {
+        if(point_remain >= point)
+        {
+            point_remain -= point;
+            return true;
+        }
+        return false;
     }
 	// Use this for initialization
 	void Start () {

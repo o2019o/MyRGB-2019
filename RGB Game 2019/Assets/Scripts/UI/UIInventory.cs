@@ -19,6 +19,7 @@ public class UIInventory : MonoBehaviour {
             itemGridList.Add(grid);
         }
         tween = GetComponent<TweenPosition>();
+        coinLabel = GameObject.Find("CoinLabel").GetComponent<UILabel>();
     }
 
     private bool isShow = false;
@@ -43,10 +44,10 @@ public class UIInventory : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.F))
         {
             int aa = Random.Range(1001, 1004);
-            GetItemId(aa);
+            GetItemId(aa,1);
         }
 	}
-    public void GetItemId(int id)
+    public void GetItemId(int id,int count=1)
     {
         UIInventoryItemGrid grid = null;
         foreach(UIInventoryItemGrid temp in itemGridList)
@@ -58,7 +59,7 @@ public class UIInventory : MonoBehaviour {
         }
         if(grid != null)
         {
-            grid.PulsCount();
+            grid.PulsCount(count);
         }
         else
         {
@@ -75,8 +76,18 @@ public class UIInventory : MonoBehaviour {
                 item.transform.SetParent(grid.transform);
                 item.transform.localPosition = Vector3.zero;
                 item.transform.localScale = Vector3.one;
-                grid.SetGirdId(id);
+                grid.SetGirdId(id,count);
             }
         }
+    }
+    public bool GetCoinCount(int count)
+    {
+        if(cionCount > count)
+        {
+            cionCount -= count;
+            coinLabel.text = cionCount.ToString();
+            return true;
+        }
+        return false;
     }
 }

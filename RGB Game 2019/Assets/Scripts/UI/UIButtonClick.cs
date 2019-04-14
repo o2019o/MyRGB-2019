@@ -41,7 +41,7 @@ public class UIButtonClick : MonoBehaviour {
 
     private void OnStatusClick()
     {
-
+        UIStutas.Instance.SetTweenPos();
     }
 
     // Update is called once per frame

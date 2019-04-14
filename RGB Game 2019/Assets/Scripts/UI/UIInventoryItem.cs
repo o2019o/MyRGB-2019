@@ -45,7 +45,6 @@ public class UIInventoryItem : UIDragDropItem {
         base.OnDragDropRelease(temp);
         if(temp != null)
         {
-            Debug.Log(temp);
             if(temp.tag == "InventoryItemGrid")
             {
                 if (temp == transform.parent.gameObject)
